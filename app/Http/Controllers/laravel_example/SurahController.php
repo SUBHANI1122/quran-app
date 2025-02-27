@@ -65,10 +65,10 @@ class SurahController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Surah $surah)
+    public function show($id)
     {
-        return new SurahResource($surah);
-    }
+        $surah = Surah::with('ayahs')->findOrFail($id);
+        return new SurahResource($surah);    }
 
     /**
      * Update the specified resource in storage.

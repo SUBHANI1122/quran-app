@@ -16,6 +16,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/surahs', [SurahController::class, 'index']);
     Route::get('/surahs/{id}', [SurahController::class, 'show']);
 
+
+
     // Ayah Routes
     Route::get('/ayahs', [AyahController::class, 'index']);
     Route::get('/ayahs/{id}', [AyahController::class, 'show']);
