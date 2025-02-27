@@ -1,0 +1,21 @@
+$(function(){const t=$(".select2");t.length&&t.each(function(){var e=$(this);e.wrap('<div class="position-relative"></div>').select2({placeholder:"Select value",dropdownParent:e.parent()})})});var p=$(".datatables-general-ledger"),D=$(".start_date"),F=$(".end_date");$("#offCanvasForm");$.ajaxSetup({headers:{"X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")}});var y=$("html").attr("dir")==="rtl",i=$(".flatpickr-range"),w="MM/DD/YYYY";i.length&&i.flatpickr({mode:"range",dateFormat:"m/d/Y",orientation:y?"auto right":"auto left",locale:{format:w},onClose:function(t){var e="",a=new Date;t[0]!=null&&(e=moment(t[0]).format("MM/DD/YYYY"),D.val(e)),t[1]!=null&&(a=moment(t[1]).format("MM/DD/YYYY"),F.val(a)),$(i).trigger("change").trigger("keyup")}});$("#currency_id").on("change",function(){var t=$(this).find("option:selected"),e=t.data("symbol"),a=t.data("name");$("#currency_symbol").val(a+" - "+e)});$("#searchBtn").click(function(){const t=$("#date_from").val(),e=$("#date_to").val();if(t&&!e){Swal.fire({title:"Error!",text:'Please select the "To Date" when "From Date" is selected.',icon:"error",customClass:{confirmButton:"btn btn-success"}});return}else if(!t&&e){Swal.fire({title:"Error!",text:'Please select the "From Date" when "To Date" is selected.',icon:"error",customClass:{confirmButton:"btn btn-success"}});return}d.ajax.reload()});if(p.length){var d=p.DataTable({dom:"<'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-6'i><'col-sm-12 col-md-6 dataTables_pager'p>>",ajax:{url:baseUrl+"general-ledger/filter",type:"POST",data:function(t){t.account_name=$("#account_name").val(),t.date_from=$("#date_from").val(),t.date_to=$("#date_to").val()}},columns:[{data:"id",title:"V.No",targets:0,render:function(t,e,a,r){return`<strong class="sr-no" data-voucher_no="${a.voucher_id}" data-file_type="${a.file_type}">${a.voucher_id}</strong>`}},{data:"approved_at",title:"Date"},{data:"details",title:"Description"},{data:"debit",title:"Debit"},{data:"credit",title:"Credit"},{data:"balance",title:"Balance"}],language:{paginate:{next:'<i class="ti ti-chevron-right ti-sm"></i>',previous:'<i class="ti ti-chevron-left ti-sm"></i>'}},orderCellsTop:!0});$("input.dt-input").on("keyup",function(){d.ajax.reload(null,!1)}),$("#statuss").on("change",function(){d.ajax.reload(null,!1)})}$(document).on("click",".sr-no",function(){const t=$(this).data("voucher_no"),e=$(this).data("file_type");$.ajax({url:"/fetch-general-ledger",type:"GET",data:{voucher_no:t,fileType:e},success:function(a){var r,u;if(a.success){const{voucher_no:v,entries:n}=a.data,h=((r=n[0])==null?void 0:r.approved_by)||"N/A",_=((u=n[0])==null?void 0:u.approved_at)||"N/A";$("#date-user-details tbody").html(`
+                    <tr>
+                        <td class="text-center"><strong>${v}</strong></td>
+                        <td class="text-center">${h}</td>
+                        <td class="text-center">${_}</td>
+                    </tr>
+                `);let m=0,f=0,g=0;const x=n.map(o=>{const s=parseFloat(o.fc_amount)||0,l=parseFloat(o.debit_amount)||0,c=parseFloat(o.credit_amount)||0;return m+=s,f+=l,g+=c,`
+                        <tr>
+                            <td>${o.account_head}<br>${o.details||"N/A"}</td>
+                            <td class="text-end">${s?s.toFixed(2):"-"}</td>
+                            <td class="text-end">${l?l.toFixed(2):"-"}</td>
+                            <td class="text-end">${c?c.toFixed(2):"-"}</td>
+                        </tr>
+                    `}).join(""),b=`
+                    <tr class="table-light">
+                        <td class="text-end"><strong>Total</strong></td>
+                        <td class="text-end"><strong>${m.toFixed(2)}</strong></td>
+                        <td class="text-end"><strong>${f.toFixed(2)}</strong></td>
+                        <td class="text-end"><strong>${g.toFixed(2)}</strong></td>
+                    </tr>
+                `;$("#account-details tbody").html(x+b),$("#generalLedger").modal("show")}else Swal.fire({title:"Error!",text:a.message,icon:"error",confirmButtonClass:"btn btn-danger"})},error:function(){Swal.fire({title:"Error!",text:"An unexpected error occurred.",icon:"error",confirmButtonClass:"btn btn-danger"})}})});

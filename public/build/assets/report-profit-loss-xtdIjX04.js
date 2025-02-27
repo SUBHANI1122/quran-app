@@ -1,0 +1,1 @@
+$(function(){var t=$(".datatables-report-profit-loss");if(t.length){var e=t.DataTable({scrollX:!0,scrollCollapse:!0,buttons:[{extend:"csvHtml5",title:"Profit Loss Reports - AMS",className:"btn btn-primary",text:"Export to CSV"}],fixedColumns:{leftColumns:1},colResize:!0});e.buttons().container().appendTo(".csv-report")}});
