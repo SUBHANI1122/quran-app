@@ -7,16 +7,18 @@ use Laravel\Scout\Searchable;
 
 class Ayah extends Model
 {
-	use Searchable;
 
     protected $fillable = [
-        'number', 
+        'ayah_number',
+        'surah_number',
         'text',
-        'number_in_surah', 
-    	'juz_id',
-        'surah_id',
-        'hizb_id',
+        'audio',
+        'number_in_surah',
+        'juz',
+        'manzil',
         'page',
+        'ruku',
+        'hizb_quarter',
         'sajda'
     ];
 

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\laravel_example;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ScheduleResource;
 use App\Http\Resources\SurahResource;
 use App\Models\Surah;
 use Carbon\Carbon;
@@ -26,15 +25,15 @@ class SurahController extends Controller
             ->allowedIncludes(['ayahs'])
             ->allowedFilters([
                 AllowedFilter::scope('by_search'),
-                'name',
-                'type'
+                'name_ar',          // Ensure this matches your database column
+                'revelation_type'
             ])
-            ->defaultSort('-created_at')
-            ->allowedSorts('name', 'created_at', 'id')
+            ->defaultSort('number') // Sort by surah number instead of created_at
+            ->allowedSorts('number', 'name_ar', 'created_at') // Sorted by surah number and name
             ->paginate($request->get('per_page', 30));
 
         return SurahResource::collection($data);
-    }    
+    }
 
 
     /**
@@ -56,7 +55,7 @@ class SurahController extends Controller
         $surah->name = $request->name;
         $surah->icon = $request->icon;
         $surah->save();
-        
+
         return new SurahResource($surah);
     }
 
@@ -88,7 +87,7 @@ class SurahController extends Controller
         $surah->name = $request->name;
         $surah->icon = $request->icon;
         $surah->save();
-        
+
         return new SurahResource($surah);
     }
 
@@ -103,5 +102,4 @@ class SurahController extends Controller
         $surah->delete();
         return response(['status' => 'surah deleted']);
     }
-
 }

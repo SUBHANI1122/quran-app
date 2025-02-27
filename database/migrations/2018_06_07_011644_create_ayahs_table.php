@@ -15,15 +15,21 @@ class CreateAyahsTable extends Migration
     {
         Schema::create('ayahs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('number');
+            $table->integer('ayah_number')->unique();
+            $table->integer('surah_number');
             $table->text('text');
+            $table->string('audio')->nullable();
             $table->integer('number_in_surah');
+            $table->integer('juz');
+            $table->integer('manzil');
             $table->integer('page');
-            $table->integer('surah_id');
-            $table->integer('hizb_id');
-            $table->integer('juz_id');
+            $table->integer('ruku');
+            $table->integer('hizb_quarter');
             $table->boolean('sajda');
             $table->timestamps();
+
+            $table->foreign('surah_number')->references('number')->on('surahs')->onDelete('cascade');
+
         });
     }
 

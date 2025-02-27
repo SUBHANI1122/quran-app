@@ -15,12 +15,12 @@ class CreateSurahsTable extends Migration
     {
         Schema::create('surahs', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('number')->unique();
             $table->string('name');
-            $table->integer('nAyah');
-            $table->integer('revelationOrder');
-            $table->string('type');
-            $table->integer('start');
-            $table->integer('end');
+            $table->string('english_name');
+            $table->string('english_name_translation');
+            $table->integer('number_of_ayahs');
+            $table->string('revelation_type');
             $table->timestamps();
         });
     }

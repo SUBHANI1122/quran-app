@@ -6,8 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Surah extends Model
 {
-   	protected $fillable = ['number', 'name_ar', 'name_en', 'name_en_translation', 'type'];
-
+    protected $fillable = [
+        'number',
+        'name',
+        'english_name',
+        'english_name_translation',
+        'number_of_ayahs',
+        'revelation_type'
+    ];
 
     /**
      * get ayahs.

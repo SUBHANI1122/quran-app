@@ -25,17 +25,17 @@ class AyahController extends Controller
         $data = QueryBuilder::for(Ayah::class)
             ->allowedFilters([
                 AllowedFilter::scope('by_search'),
-                'surah_id',
-                'juz_id',
-                'hizb_id'
+                'surah_number', 
+                'juz',         
+                'hizb_quarter'
             ])
-            ->defaultSort('number')
-            ->allowedSorts('number')
-            ->allowedIncludes(['surah', 'juz', 'hizb'])
+            ->defaultSort('ayah_number') 
+            ->allowedSorts('ayah_number') 
+            ->allowedIncludes(['surah'])
             ->paginate($request->get('per_page', 30));
-
+    
         return AyahResource::collection($data);
-    }    
+    }
 
 
     /**
