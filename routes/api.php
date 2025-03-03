@@ -9,7 +9,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 // Protected Routes (Require Authentication)
-Route::middleware('auth:sanctum')->group(function () {
+// Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
     // Surah Routes
@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->group(function () {
     // Ayah Routes
     Route::get('/ayahs', [AyahController::class, 'index']);
     Route::get('/ayahs/{id}', [AyahController::class, 'show']);
-});
+// });
