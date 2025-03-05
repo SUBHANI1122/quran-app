@@ -4092,5 +4092,17 @@
     "name": "temp-transfer-entry",
     "src": "resources/js/temp-transfer-entry.js",
     "isEntry": true
+  },
+  "resources/js/topics-form-wizard.js": {
+    "file": "assets/topics-form-wizard-B85lpl9A.js",
+    "name": "topics-form-wizard",
+    "src": "resources/js/topics-form-wizard.js",
+    "isEntry": true
+  },
+  "resources/js/topics.js": {
+    "file": "assets/topics-B6psOEsF.js",
+    "name": "topics",
+    "src": "resources/js/topics.js",
+    "isEntry": true
   }
 }

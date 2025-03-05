@@ -16,7 +16,7 @@ class CreateAyahEditionTable extends Migration
         Schema::create('ayah_edition', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('ayah_id')->unsigned();
+            $table->unsignedBigInteger('ayah_id');
             $table->foreign('ayah_id')->references('id')->on('ayahs')->onDelete('cascade');
 
             $table->integer('edition_id')->unsigned();

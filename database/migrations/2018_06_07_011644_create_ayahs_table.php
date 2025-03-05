@@ -14,7 +14,7 @@ class CreateAyahsTable extends Migration
     public function up()
     {
         Schema::create('ayahs', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->integer('ayah_number')->unique();
             $table->integer('surah_number');
             $table->text('text');

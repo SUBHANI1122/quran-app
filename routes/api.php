@@ -3,6 +3,8 @@ use App\Http\Controllers\laravel_example\AuthController;
 use App\Http\Controllers\laravel_example\SurahController;
 use App\Http\Controllers\laravel_example\AyahController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\form_validation\Validation;
+
 
 // Public Routes
 Route::post('/register', [AuthController::class, 'register']);
@@ -21,4 +23,6 @@ Route::post('/login', [AuthController::class, 'login']);
     // Ayah Routes
     Route::get('/ayahs', [AyahController::class, 'index']);
     Route::get('/ayahs/{id}', [AyahController::class, 'show']);
+
+    Route::get('/topics', [Validation::class, 'topicsApi']);
 // });

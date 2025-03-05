@@ -7,6 +7,9 @@ use App\Http\Controllers\language\LanguageController;
 use App\Http\Controllers\pages\UserProfile;
 use App\Http\Controllers\dome_carlow\HomeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\form_wizard\Numbered as FormWizardNumbered;
+use App\Http\Controllers\form_wizard\Icons as FormWizardIcons;
+use App\Http\Controllers\form_validation\Validation;
 
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
@@ -25,6 +28,14 @@ Route::get('/payment', [HomeController::class, 'payment'])->name('dome-carlow.pa
 Route::get('/lang/{locale}', [LanguageController::class, 'swap']);
 
 Route::get('/user-security', [UserProfile::class, 'security'])->name('user-security');
+
+
+
+
+// Route::get('/form/wizard-numbered', [FormWizardNumbered::class, 'index'])->name('form-wizard-numbered');
+// Route::get('/form/wizard-icons', [FormWizardIcons::class, 'index'])->name('form-wizard-icons');
+Route::get('/topics', [Validation::class, 'index'])->name('topics.index');
+Route::get('/topic/create', [Validation::class, 'create'])->name('topic.create');
 
 
 

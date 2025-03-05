@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 @php
-    $menuFixed =
-        $configData['layout'] === 'vertical'
-            ? $menuFixed ?? ''
-            : ($configData['layout'] === 'front'
-                ? ''
-                : $configData['headerType']);
-    $navbarType =
-        $configData['layout'] === 'vertical'
-            ? $configData['navbarType'] ?? ''
-            : ($configData['layout'] === 'front'
-                ? 'layout-navbar-fixed'
-                : '');
-    $isFront = ($isFront ?? '') == true ? 'Front' : '';
-    $contentLayout = isset($container) ? ($container === 'container-xxl' ? 'layout-compact' : 'layout-wide') : '';
+$menuFixed =
+$configData['layout'] === 'vertical'
+? $menuFixed ?? ''
+: ($configData['layout'] === 'front'
+? ''
+: $configData['headerType']);
+$navbarType =
+$configData['layout'] === 'vertical'
+? $configData['navbarType'] ?? ''
+: ($configData['layout'] === 'front'
+? 'layout-navbar-fixed'
+: '');
+$isFront = ($isFront ?? '') == true ? 'Front' : '';
+$contentLayout = isset($container) ? ($container === 'container-xxl' ? 'layout-compact' : 'layout-wide') : '';
 @endphp
 
 <html lang="{{ session()->get('locale') ?? app()->getLocale() }}"
@@ -51,6 +51,9 @@
     <!-- Include Scripts for customizer, helper, analytics, config -->
     <!-- $isFront is used to append the front layout scriptsIncludes only on the front layout otherwise the variable will be blank -->
     @include('layouts/sections/scriptsIncludes' . $isFront)
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @livewireStyles
 </head>
 
 <body>
@@ -65,6 +68,7 @@
     <!-- $isFront is used to append the front layout scripts only on the front layout otherwise the variable will be blank -->
     {{-- @include('layouts/sections/mainLayoutScripts'); --}}
     @include('layouts/sections/scripts' . $isFront)
+    @livewireScripts
 
 </body>
 
