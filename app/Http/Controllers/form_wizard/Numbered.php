@@ -9,6 +9,6 @@ class Numbered extends Controller
 {
   public function index()
   {
-    return view('content.form-wizard.form-wizard-numbered');
+    return view('content.laravel-example.topics.form');
   }
 }

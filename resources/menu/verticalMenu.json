@@ -5,6 +5,12 @@
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "dashboard",
       "url": "home"
+    },
+    {
+      "name": "Topics",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "topics.index",
+      "url": "/topics"
     }
   ]
 }
