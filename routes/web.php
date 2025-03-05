@@ -10,13 +10,23 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\form_wizard\Numbered as FormWizardNumbered;
 use App\Http\Controllers\form_wizard\Icons as FormWizardIcons;
 use App\Http\Controllers\form_validation\Validation;
+use App\Http\Controllers\laravel_example\PageController;
 
 Auth::routes();
+
+
+Route::get('/', [PageController::class, 'index'])->name('index');
+Route::get('/about-us', [PageController::class, 'aboutUs'])->name('about');
+Route::get('/quran', [PageController::class, 'quran'])->name('quran');
+Route::get('/contact-us', [PageController::class, 'contactUs'])->name('contact');
+Route::get('/blogs', [PageController::class, 'blogs'])->name('blogs');
+Route::get('/quran-bil-awunwan', [PageController::class, 'quranBilAunwan'])->name('quran-bil-awunwan');
+
 Route::group(['middleware' => 'auth'], function () {
   Route::get('home', [HomeController::class, 'dashboard'])->name('dashboard');
 });
 // Main Page Route
-Route::any('/', [LoginController::class, 'showLoginForm'])->name('login');
+// Route::any('/', [LoginController::class, 'showLoginForm'])->name('login');
 
 // Route to handle the login submission
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
