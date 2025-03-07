@@ -20,6 +20,6 @@ class Surah extends Model
      */
     public function ayahs()
     {
-        return $this->hasMany(Ayah::class);
+        return $this->hasMany(Ayah::class, 'surah_number');
     }
 }
