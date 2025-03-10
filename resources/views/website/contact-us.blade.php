@@ -1,8 +1,7 @@
-@extends('layouts.app')
-
-@section('title', 'Contact Us')
-
+@extends('website.layouts.main')
 @section('content')
-    <h2 class="text-2xl font-semibold">Contact Us</h2>
-    <p>Feel free to reach out to us.</p>
+    <div class="container mt-5">
+        <h1>Contact Us</h1>
+        <p>Contact details and inquiry form.</p>
+    </div>
 @endsection

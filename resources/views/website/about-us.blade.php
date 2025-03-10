@@ -1,8 +1,7 @@
-@extends('layouts.app')
-
-@section('title', 'About Us')
-
+@extends('website.layouts.main')
 @section('content')
-    <h2 class="text-2xl font-semibold">About Us</h2>
-    <p>Learn more about our mission and vision.</p>
+    <div class="container mt-5">
+        <h1>About Us</h1>
+        <p>Information about our organization.</p>
+    </div>
 @endsection

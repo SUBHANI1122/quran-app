@@ -1,8 +1,7 @@
-@extends('layouts.app')
-
-@section('title', 'Home')
-
+@extends('website.layouts.main')
 @section('content')
-    <h2 class="text-2xl font-semibold">Quran App</h2>
-    <p>This is the home page.</p>
+    <div class="container mt-5">
+        <h1>Quran App by topics</h1>
+        <p>This is the homepage content.</p>
+    </div>
 @endsection

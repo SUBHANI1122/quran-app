@@ -1,8 +1,7 @@
-@extends('layouts.app')
-
-@section('title', 'Topic Details')
-
+@extends('website.layouts.main')
 @section('content')
-    <h2 class="text-2xl font-semibold">Topic Details</h2>
-    <p>Details about a specific topic.</p>
+    <div class="container mt-5">
+        <h1>Quran Topic Details</h1>
+        <p>Showing details for the selected topic.</p>
+    </div>
 @endsection

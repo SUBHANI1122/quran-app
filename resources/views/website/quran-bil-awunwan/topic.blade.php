@@ -1,8 +1,7 @@
-@extends('layouts.app')
-
-@section('title', 'Quran Bil Awunwan Topics')
-
+@extends('website.layouts.main')
 @section('content')
-    <h2 class="text-2xl font-semibold">Topics</h2>
-    <p>Browse different topics.</p>
+    <div class="container mt-5">
+        <h1>Quran Topics</h1>
+        <p>Select a topic to view related Quranic verses.</p>
+    </div>
 @endsection
