@@ -4,7 +4,7 @@ use App\Http\Controllers\laravel_example\SurahController;
 use App\Http\Controllers\laravel_example\AyahController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\form_validation\Validation;
-
+use App\Http\Controllers\laravel_example\JuzController;
 
 // Public Routes
 Route::post('/register', [AuthController::class, 'register']);
@@ -18,6 +18,7 @@ Route::post('/login', [AuthController::class, 'login']);
     Route::get('/surahs', [SurahController::class, 'index']);
     Route::get('/surahs/{id}', [SurahController::class, 'show']);
 
+    Route::get('/juzs', [JuzController::class, 'index']);
 
 
     // Ayah Routes

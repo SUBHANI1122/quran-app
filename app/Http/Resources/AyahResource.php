@@ -39,6 +39,7 @@ class AyahResource extends JsonResource
             'id' => $this->id,
             'ayah_number' => $this->ayah_number,
             'text' => $this->text,
+            'english_text' => $this->english_text,
             'audio' => $this->audio,
             'number_in_surah' => (int)$this->number_in_surah,
             'juz' => (int)$this->juz,
