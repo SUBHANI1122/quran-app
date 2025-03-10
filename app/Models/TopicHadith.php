@@ -9,10 +9,15 @@ class TopicHadith extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['topic_id', 'hadith_text_arabic', 'hadith_text_urdu','hadith_text_english','description'];
+    protected $fillable = ['topic_id', 'hadith_text_arabic', 'hadith_text_urdu', 'hadith_text_english', 'description'];
 
     public function topic()
     {
         return $this->belongsTo(Topic::class);
+    }
+
+    public function references()
+    {
+        return $this->hasMany(HadithReference::class, 'topic_hadiths_id');
     }
 }

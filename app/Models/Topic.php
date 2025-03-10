@@ -9,7 +9,7 @@ class Topic extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'alternative_name', 'description', 'ayah_count', 'hadith_count', 'status'];
+    protected $fillable = ['name', 'alternative_name', 'description', 'ayah_count', 'hadith_count', 'status', 'topic_of_the_day'];
 
     public function ayahs()
     {

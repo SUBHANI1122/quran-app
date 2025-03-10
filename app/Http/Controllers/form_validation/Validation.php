@@ -22,6 +22,31 @@ class Validation extends Controller
 
   public function topicsApi()
   {
-    return TopicResource::collection(Topic::with(['ayahs', 'hadiths'])->get());
+    return TopicResource::collection(Topic::with(['ayahs', 'hadiths'])->where('status', 'published')->get());
+  }
+  public function getTopicsOfTheDay()
+  {
+    $topics = Topic::where('topic_of_the_day', true)->get();
+
+    return response()->json([
+      'success' => true,
+      'topics' => $topics
+    ]);
+  }
+
+  public function destroy(Topic $topic)
+  {
+    $topic->delete();
+    return response()->json(['success' => true]);
+  }
+
+  public function setTopicOfTheDay($id)
+  {
+    Topic::where('topic_of_the_day', true)->update(['topic_of_the_day' => false]);
+
+    $topic = Topic::find($id);
+    $topic->update(['topic_of_the_day' => true]);
+
+    return response()->json(['success' => true]);
   }
 }
