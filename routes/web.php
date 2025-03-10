@@ -46,6 +46,14 @@ Route::get('/user-security', [UserProfile::class, 'security'])->name('user-secur
 // Route::get('/form/wizard-icons', [FormWizardIcons::class, 'index'])->name('form-wizard-icons');
 Route::get('/topics', [Validation::class, 'index'])->name('topics.index');
 Route::get('/topic/create', [Validation::class, 'create'])->name('topic.create');
+Route::get('/topics/{topic}/edit', function ($id) {
+  return view('content.laravel-example.topics.edit', ['topic_id' => $id]);
+})->name('topic.edit');
+
+Route::delete('/topics/{topic}', [Validation::class, 'destroy']);
+Route::post('/topics/set-topic-of-the-day/{id}', [Validation::class, 'setTopicOfTheDay']);
+
+
 
 
 

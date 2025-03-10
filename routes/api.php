@@ -25,4 +25,6 @@ Route::post('/login', [AuthController::class, 'login']);
     Route::get('/ayahs/{id}', [AyahController::class, 'show']);
 
     Route::get('/topics', [Validation::class, 'topicsApi']);
+    Route::get('/topics-of-the-day', [Validation::class, 'getTopicsOfTheDay']);
+
 // });
