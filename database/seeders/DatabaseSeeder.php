@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
     $this->call([JuzTableSeeder::class]);
     $this->call([SurahSeeder::class]);
     $this->call([AyahSeeder::class]);
+    $this->call([AyahEnglishTranslationSeeder::class]);
 
 
   }
