@@ -24,6 +24,8 @@ class TopicResource extends JsonResource
                     'id' => $ayah->id,
                     'surah_id' => $ayah->ayah->surah_number,
                     'ayah_text' => $ayah->ayah->text,
+                    'ayah_english_text' => $ayah->ayah->english_text,
+                    'ayah_urdu_text' => $ayah->ayah->urdu_text,
                     'description' => $ayah->description
                 ];
             }),
