@@ -5,6 +5,8 @@ use App\Http\Controllers\laravel_example\AyahController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\form_validation\Validation;
 use App\Http\Controllers\laravel_example\JuzController;
+use App\Http\Controllers\laravel_example\TopicProgressController;
+
 
 // Public Routes
 Route::post('/register', [AuthController::class, 'register']);
@@ -27,5 +29,10 @@ Route::post('/login', [AuthController::class, 'login']);
 
     Route::get('/topics', [Validation::class, 'topicsApi']);
     Route::get('/topics-of-the-day', [Validation::class, 'getTopicsOfTheDay']);
+
+    Route::post('/topic-progress', [TopicProgressController::class, 'store']);
+    Route::get('/topic-progress/{user_id}', [TopicProgressController::class, 'getUserProgress']);
+
+
 
 // });
