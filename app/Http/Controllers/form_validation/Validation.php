@@ -26,20 +26,21 @@ class Validation extends Controller
   }
   public function getTopicOfTheDayById($topic_id)
   {
-    $topic = Topic::where('id', $topic_id)
-      ->where('topic_of_the_day', true)
+    $topic = Topic::with(['ayahs', 'hadiths'])
+      ->where('id', $topic_id)
+      ->where('status', 'published')
       ->first();
 
     if (!$topic) {
       return response()->json([
         'success' => false,
-        'message' => 'Topic not found or not marked as topic of the day.',
+        'message' => 'Topic not found or not published.',
       ], 404);
     }
 
     return response()->json([
       'success' => true,
-      'topic' => $topic
+      'topic' => new TopicResource($topic),
     ]);
   }
 
