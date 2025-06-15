@@ -11,6 +11,8 @@ use App\Http\Controllers\form_wizard\Numbered as FormWizardNumbered;
 use App\Http\Controllers\form_wizard\Icons as FormWizardIcons;
 use App\Http\Controllers\form_validation\Validation;
 use App\Http\Controllers\laravel_example\PageController;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\File;
 
 Auth::routes();
 
@@ -21,7 +23,15 @@ Route::get('/quran', [PageController::class, 'quran'])->name('quran');
 Route::get('/contact-us', [PageController::class, 'contactUs'])->name('contact');
 Route::get('/blogs', [PageController::class, 'blogs'])->name('blogs');
 Route::get('/quran-bil-awunwan', [PageController::class, 'quranBilAunwan'])->name('quran-bil-awunwan');
+Route::get('/download-log', function () {
+    $path = storage_path('logs/laravel.log');
 
+    if (!File::exists($path)) {
+        abort(404, 'Log file not found.');
+    }
+
+    return Response::download($path, 'laravel.log');
+});
 Route::group(['middleware' => 'auth'], function () {
   Route::get('home', [HomeController::class, 'dashboard'])->name('dashboard');
 });
