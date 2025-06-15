@@ -37,7 +37,6 @@ class Validation extends Controller
         'message' => 'Topic not found or not published.',
       ], 404);
     }
-
     return response()->json([
       'success' => true,
       'topic' => new TopicResource($topic),
