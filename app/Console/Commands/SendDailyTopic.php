@@ -45,7 +45,7 @@ class SendDailyTopic extends Command
         }
 
         $title = $topic->name;
-        $body = $topic->name;
+        $body = $topic->description;
 
         $this->firebase->sendToTopic('daily_topic', $title, $body, [
             'topic_id' => (string) $topic->id
