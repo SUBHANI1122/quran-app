@@ -24,13 +24,23 @@ class Validation extends Controller
   {
     return TopicResource::collection(Topic::with(['ayahs', 'hadiths'])->where('status', 'published')->get());
   }
-  public function getTopicsOfTheDay()
+  public function getTopicOfTheDayById($topic_id)
   {
-    $topics = Topic::where('topic_of_the_day', true)->get();
+    $topic = Topic::with(['ayahs', 'hadiths'])
+      ->where('id', $topic_id)
+      ->where('status', 'published')
+      ->first();
+
+    if (!$topic) {
+      return response()->json([
+        'success' => false,
+        'message' => 'Topic not found or not published.',
+      ], 404);
+    }
 
     return response()->json([
       'success' => true,
-      'topics' => $topics
+      'topic' => new TopicResource($topic),
     ]);
   }
 
