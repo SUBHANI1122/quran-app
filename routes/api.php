@@ -30,7 +30,7 @@ Route::post('/login', [AuthController::class, 'login']);
     Route::get('/topics', [Validation::class, 'topicsApi']);
     Route::get('/topics-of-the-day', [Validation::class, 'getTopicsOfTheDay']);
 
-    Route::post('/topic-progress', [TopicProgressController::class, 'store']);
+    Route::post('/topic-progress', [Topi::class, 'store']);
     Route::get('/topic-progress/{user_id}', [TopicProgressController::class, 'getUserProgress']);
 
 
