@@ -3,7 +3,6 @@
 namespace App\Schedule;
 
 use Illuminate\Console\Scheduling\Schedule;
-use App\Console\Commands\SendDailyTopic;
 
 class SendDailyTopicSchedule
 {
