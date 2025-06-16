@@ -18,9 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web(LocaleMiddleware::class);
         $middleware->web(SessionTimeoutMiddleware::class);
     })
-    ->schedule([
-        SendDailyTopicSchedule::class,
-    ])
+    
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })
