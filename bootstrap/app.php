@@ -6,6 +6,7 @@ use Illuminate\Foundation\Configuration\Middleware;
 use App\Http\Middleware\LocaleMiddleware;
 use App\Http\Middleware\SessionTimeoutMiddleware;
 use App\Schedule\SendDailyTopicSchedule;
+use Illuminate\Console\Scheduling\Schedule;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -21,4 +22,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })
+    ->withSchedule(function (Schedule $schedule) {
+        (new SendDailyTopicSchedule())->__invoke($schedule);
+    })
     ->create();
+
