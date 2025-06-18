@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\laravel_example;
 
 use App\Http\Controllers\Controller;
@@ -35,6 +36,7 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
+            'fcm_token' => 'nullable|string',
         ]);
 
         $user = User::where('email', $request->email)->first();
@@ -45,14 +47,21 @@ class AuthController extends Controller
             ]);
         }
 
+        if ($request->filled('fcm_token')) {
+            $user->fcm_token = $request->fcm_token;
+            $user->save();
+        }
+
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
             'message' => 'Login successful',
             'access_token' => $token,
             'token_type' => 'Bearer',
+            'user' => $user,
         ]);
     }
+
 
     public function logout(Request $request)
     {
