@@ -22,8 +22,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })
-    ->withSchedule(function (Schedule $schedule) {
-        (new SendDailyTopicSchedule())->__invoke($schedule);
-    })
+    // ->withSchedule(function (Schedule $schedule) {
+    //     (new SendDailyTopicSchedule())->__invoke($schedule);
+    // })
     ->create();
 
