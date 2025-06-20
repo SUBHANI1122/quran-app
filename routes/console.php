@@ -8,4 +8,4 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote')->hourly();
 
-Schedule::command('send:daily-topic')->hourly()->sendOutputTo(storage_path('logs/daily-topic.log'));
+Schedule::command('send:daily-topic')->daily()->sendOutputTo(storage_path('logs/daily-topic.log'));
