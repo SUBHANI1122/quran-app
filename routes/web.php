@@ -18,6 +18,8 @@ Auth::routes();
 
 
 Route::get('/', [PageController::class, 'index'])->name('index');
+Route::get('/get-ayahs/{surahNumber}', [PageController::class, 'getAyahsBySurah']);
+
 Route::get('/about-us', [PageController::class, 'aboutUs'])->name('about');
 Route::get('/quran', [PageController::class, 'quran'])->name('quran');
 Route::get('/contact-us', [PageController::class, 'contactUs'])->name('contact');

@@ -4,12 +4,25 @@ namespace App\Http\Controllers\laravel_example;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Surah;
+use App\Models\Juz;
+use App\Models\Ayah;
 
 class PageController extends Controller
 {
     public function index()
     {
-        return view('website.index');
+        $surahs = Surah::orderBy('id')->get();
+        $juzz = Juz::orderBy('number')->get();
+
+        return view('website.index', compact('surahs', 'juzz'));
+    }
+
+    public function getAyahsBySurah($surahNumber)
+    {
+        $ayahs = Ayah::where('surah_number', $surahNumber)->orderBy('ayah_number')->get();
+
+        return response()->json($ayahs);
     }
 
     public function aboutUs()
